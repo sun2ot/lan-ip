@@ -58,7 +58,7 @@ def send_ip_to_remote_api(ip):
         
         # 发送POST请求，将IP数据发送到远端接口
         # 根据发型版本不同，确定 device 参数
-        response = requests.post(url, data={"ip": ip, "dev": 'yzh'})
+        response = requests.post(url, data={"ip": ip, "dev": 'printer'})
         
         # 打印响应结果
         logger.info(f"response: {response.text}")
