@@ -57,7 +57,8 @@ def send_ip_to_remote_api(ip):
         url = args.url
         
         # 发送POST请求，将IP数据发送到远端接口
-        response = requests.post(url, data={"ip": ip})
+        # 根据发型版本不同，确定 device 参数
+        response = requests.post(url, data={"ip": ip, "dev": 'yzh'})
         
         # 打印响应结果
         logger.info(f"response: {response.text}")
@@ -65,7 +66,7 @@ def send_ip_to_remote_api(ip):
         logger.error(f"Failed to send IP to remote API: {e}")
 
 
-# 主循环，每隔5分钟执行一次
+# 主循环，每隔 interval 执行一次
 while True:
     # 获取本地IP地址
     local_ip = get_local_ip()
